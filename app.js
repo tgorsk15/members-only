@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
-// import routers here
+// import routers
+const indexRouter = require('./routes/index')
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }))
 
+const assetsPath = path.join(__dirname, "public")
 app.use(express.static(assetsPath))
 
 // use routers here
-
+app.use("/", indexRouter)
 
 
 const PORT = process.env.PORT || 5000
