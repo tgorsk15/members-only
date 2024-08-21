@@ -14,9 +14,9 @@ const assetsPath = path.join(__dirname, "public")
 app.use(express.static(assetsPath))
 
 // use routers here
+app.use("/user", userRouter);
+app.use("/post", postRouter);
 app.use("/", indexRouter);
-app.use("user", userRouter);
-app.use("post", postRouter);
 
 
 

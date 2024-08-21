@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/login-signup-form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <form action="/user/new" method="POST" class="signup-form">
+        <div class="full-name-section">
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" id="lastName" required>
+        </div>
+
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password" required>
+
+        <h3 class="member-status-info">
+            Once you've created an account, join the clubhouse for exclusive features!
+        </h3>
+
+        <button class="sign-up-button">Create Account</button>
+    </form>
+</body>
+</html>
