@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path')
 const app = express();
 // import routers
 const indexRouter = require('./routes/index')
