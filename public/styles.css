@@ -1,0 +1,10 @@
+.html, body {
+    margin: 0px;
+}
+
+.navbar-container {
+    width: 100%;
+    background-color: lightseagreen;
+    padding: 20px;
+    margin-bottom: 30px;
+}
