@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const userRouter = Router();
+const usersController = require('../controllers/usersController');
 
-userRouter.get("/user", )
+userRouter.get("/new", usersController.signupFormGet)
 
 module.exports = userRouter
