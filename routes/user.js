@@ -7,6 +7,7 @@ userRouter.post("/new", usersController.signupPost)
 
 // for login
 userRouter.get("/login", usersController.loginFormGet)
+userRouter.post("/login", usersController.loginFormPost)
 
 
 module.exports = userRouter

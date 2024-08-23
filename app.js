@@ -4,6 +4,7 @@ const app = express();
 const session = require('express-session')
 const pool = require('./db/pool')
 const pgSession = require('connect-pg-simple')(session);
+const passport = require('passport')
 
 require('dotenv').config();
 require('./auth/passport')
@@ -33,6 +34,9 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24
     }
 }))
+
+// ensure passport is used
+app.use(passport.session())
 
 
 const assetsPath = path.join(__dirname, "public")
