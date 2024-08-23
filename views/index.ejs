@@ -9,22 +9,12 @@
 <body>
     <!-- include header -->
     <%- include('partials/navbar.ejs') %>
-    <!-- if user is not logged in/signed up, show sign-in page: -->
-    <form action="/login" method="POST" class="login-form">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-
-        <label for="password">Password:</label>
-        <input type="text" name="password" id="password" required>
-
-        <button class="login-button">Log In</button>
-    </form>
-    <div class="signup-prompt-container">
-        <h3 class="signup-prompt">
-            Don't have an account? Sign up
-            <span><a href="/user/new" class="signup-link">Here</a></span>
-        </h3>
-    </div>
+    <!-- if user is not logged in, show home menu: -->
+    <section class="home-menu">
+        <h2 class="welcome-header">Welcome to my site</h2>
+        <a href="/user/login">Sign In</a>
+        <a href="/user/new">Sign Up</a>
+    </section>
     <!-- otherwise, show the main messageboard -->
 </body>
 </html>

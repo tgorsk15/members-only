@@ -8,6 +8,12 @@ exports.homePageGet = async (req,res) => {
     })
 }
 
+exports.loginFormGet = async (req, res) => {
+    res.render('login', {
+        title: "Log In"
+    })
+}
+
 exports.signupFormGet = async (req, res) => {
     console.log('this is sign up function')
     res.render('signup', {
