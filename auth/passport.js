@@ -18,6 +18,7 @@ const strategy = new LocalStrategy(async (username, password, done) => {
         if (!match) {
             return done(null, false, { message: "incorrect password" })
         }
+        console.log('username and password worked')
         return done(null,user)
 
     } catch (err) {
@@ -34,6 +35,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
     try {
         const user = await db.getUserById(id)
+        console.log(user)
 
         done(null, user)
     } catch(err) {

@@ -1,4 +1,5 @@
 const db = require("../db/queries")
+const passport = require("passport")
 const bcrypt = require('bcryptjs')
 
 exports.homePageGet = async (req,res) => {
@@ -8,12 +9,30 @@ exports.homePageGet = async (req,res) => {
     })
 }
 
+// logging in
 exports.loginFormGet = async (req, res) => {
     res.render('login', {
         title: "Log In"
     })
 }
 
+exports.loginFormPost = async (req, res) => {
+    console.log('logging in')
+    console.log(req.session)
+    try {
+        passport.authenticate("local", {
+            successRedirect: "/post/posts",
+            failureRedirect: "/user/login"
+        })
+        console.log('authenticated?')
+        // res.redirect("/")
+
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+// signing up
 exports.signupFormGet = async (req, res) => {
     console.log('this is sign up function')
     res.render('signup', {
