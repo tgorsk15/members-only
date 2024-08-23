@@ -1,2 +1,4 @@
 # database variables
 .env
+
+node_modules

@@ -12,6 +12,7 @@ require('./auth/passport')
 // set up store
 const sessionStore = new pgSession({
     pool: pool,
+    createTableIfMissing: true
 })
 console.log(sessionStore)
 

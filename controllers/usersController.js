@@ -20,10 +20,10 @@ exports.loginFormPost = async (req, res) => {
     console.log('logging in')
     console.log(req.session)
     try {
-        passport.authenticate("local", {
-            successRedirect: "/post/posts",
-            failureRedirect: "/user/login"
-        })
+        // passport.authenticate("local", {
+        //     successRedirect: "/post/posts",
+        //     failureRedirect: "/user/login"
+        // })
         console.log('authenticated?')
         // res.redirect("/")
 
