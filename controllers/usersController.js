@@ -18,7 +18,6 @@ exports.signupFormGet = async (req, res) => {
 exports.signupPost = async (req, res, next) => {
     // use passport to store user in session
     try {
-        console.log(req.body)
         const userInfo = req.body
         userInfo.isMember = false
         userInfo.isAdmin = false
@@ -26,10 +25,16 @@ exports.signupPost = async (req, res, next) => {
         
         bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
             console.log(hashedPassword)
-            await db.insertNewUser(userInfo)
+            await db.insertNewUser(userInfo, hashedPassword)
+        })
+
+        // if it works, let user know it worked
+        res.render("signup", {
+            title: 'Sign Up',
+            joined: true
         })
     } catch(err) {
-
+        return next(err)
     }
 
     console.log('profile created')

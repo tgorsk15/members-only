@@ -2,9 +2,9 @@ const { Client } = require('pg');
 require('dotenv').config();
 
 const resetTables = `
+    DROP TABLE IF EXISTS users_posts;
     DROP TABLE IF EXISTS users;
     DROP TABLE IF EXISTS posts;
-    DROP TABLE IF EXISTS users_posts;
 `
 
 const createUsersTable = `
@@ -13,7 +13,7 @@ const createUsersTable = `
         first_name VARCHAR(20) NOT NULL,
         last_name VARCHAR(20) NOT NULL,
         username VARCHAR(25) NOT NULL,
-        password VARCHAR(50) NOT NULL,
+        password VARCHAR(150) NOT NULL,
         isMember BOOLEAN NOT NULL,
         isAdmin BOOLEAN NOT NULL
     )

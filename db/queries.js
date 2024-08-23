@@ -19,13 +19,13 @@ async function getUserById(id) {
     return rows[0]
 }
 
-async function insertNewUser(userInfo) {
+async function insertNewUser(userInfo, hashedPassword) {
     const insert = await pool.query(`
         INSERT INTO users (first_name, last_name, username, password, ismember, isadmin)
         VALUES
             ($1, $2, $3, $4, $5, $6)
     `, [userInfo.firstName, userInfo.lastName, userInfo.username, 
-        userInfo.password, userInfo.isMember, userInfo.isAdmin])
+        hashedPassword, userInfo.isMember, userInfo.isAdmin])
 }
 
 // possible map: an entry into user_messages table does not
