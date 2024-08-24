@@ -11,8 +11,20 @@ exports.homePageGet = async (req,res) => {
 
 // logging in
 exports.loginFormGet = async (req, res) => {
+    console.log(req.session)
+    let message = ''
+    if (req.session.messages && req.session.messages.length > 0) {
+        message = req.session.messages[0]
+    }
+    if (message.length > 1 && message) {
+        message = message.charAt(0).toUpperCase() + message.slice(1)   
+    }
+    console.log(message)
+    req.session.messages = []
+
     res.render('login', {
-        title: "Log In"
+        title: "Log In",
+        message: message
     })
 }
 
@@ -25,7 +37,6 @@ exports.loginFormPost = async (req, res) => {
         //     failureRedirect: "/user/login"
         // })
         console.log('authenticated?')
-        // res.redirect("/")
 
     } catch(err) {
         console.log(err)

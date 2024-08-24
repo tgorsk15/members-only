@@ -9,6 +9,9 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
+    <% if (message.length > 0) { %>
+        <h3 class="login-fail-message"><%= message %>: Please try again</h3>
+    <% } %>
     <form action="/user/login" method="POST" class="login-form">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required>

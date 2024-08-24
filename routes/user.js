@@ -8,9 +8,11 @@ userRouter.post("/new", usersController.signupPost)
 
 // for login
 userRouter.get("/login", usersController.loginFormGet)
+
 userRouter.post("/login", passport.authenticate(
-    "local", { successRedirect: "/post/posts", failureRedirect: "/user/login" }),
-    usersController.loginFormPost)
+    "local", { successRedirect: "/post/posts", 
+        failureRedirect: "/user/login", failureMessage: true }),
+        usersController.loginFormPost)
 
 
 module.exports = userRouter

@@ -7,7 +7,7 @@ const strategy = new LocalStrategy(async (username, password, done) => {
     try {
         // call search DB query here
         const user = await db.getUserByUsername(username);
-        console.log(user)
+        // console.log(user)
 
         const match = await bcrypt.compare(password, user.password)
 
@@ -35,7 +35,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
     try {
         const user = await db.getUserById(id)
-        console.log(user)
+        // console.log(user)
 
         done(null, user)
     } catch(err) {
