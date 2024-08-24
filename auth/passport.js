@@ -9,11 +9,11 @@ const strategy = new LocalStrategy(async (username, password, done) => {
         const user = await db.getUserByUsername(username);
         // console.log(user)
 
-        const match = await bcrypt.compare(password, user.password)
-
         if (!user) {
             return done(null, false, { message: "incorrect username" })
         }
+
+        const match = await bcrypt.compare(password, user.password)
 
         if (!match) {
             return done(null, false, { message: "incorrect password" })
