@@ -4,8 +4,10 @@ const bcrypt = require('bcryptjs')
 
 exports.homePageGet = async (req,res) => {
     console.log(req.body)
+    console.log('here is user', req.user)
     res.render('index', {
-        title: 'Home'
+        title: 'Home',
+        user: req.user
     })
 }
 
@@ -32,10 +34,6 @@ exports.loginFormPost = async (req, res) => {
     console.log('logging in')
     console.log(req.session)
     try {
-        // passport.authenticate("local", {
-        //     successRedirect: "/post/posts",
-        //     failureRedirect: "/user/login"
-        // })
         console.log('authenticated?')
 
     } catch(err) {
