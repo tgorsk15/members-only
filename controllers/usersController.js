@@ -41,6 +41,12 @@ exports.loginFormPost = async (req, res) => {
     }
 }
 
+//logout
+exports.logoutGet = async (req, res) => {
+    console.log('logging out')
+}
+
+
 // signing up
 exports.signupFormGet = async (req, res) => {
     console.log('this is sign up function')

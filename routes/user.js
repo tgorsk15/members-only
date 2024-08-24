@@ -15,4 +15,7 @@ userRouter.post("/login", passport.authenticate(
         usersController.loginFormPost)
 
 
+// log out
+userRouter.get("/logout", usersController.logoutGet)
+
 module.exports = userRouter

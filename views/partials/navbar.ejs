@@ -1,6 +1,9 @@
 <header>
     <div class="navbar-container">
         Hi there  
-    </div>
     
+    <% if (locals.user) {%>
+        <a href="/user/logout" class="logout-header-link">Log Out</a>
+    <% } %>
+    </div>
 </header>
