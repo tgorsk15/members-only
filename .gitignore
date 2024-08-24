@@ -1,5 +1,3 @@
 # database variables
 .env
 
-# node
-node_modules
