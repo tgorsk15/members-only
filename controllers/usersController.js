@@ -42,8 +42,15 @@ exports.loginFormPost = async (req, res) => {
 }
 
 //logout
-exports.logoutGet = async (req, res) => {
+exports.logoutGet = async (req, res, next) => {
     console.log('logging out')
+    req.logout((err) => {
+        if (err) {
+            return next(err)
+        }
+
+        res.redirect("/")
+    })
 }
 
 
