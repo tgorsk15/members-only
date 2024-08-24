@@ -39,12 +39,15 @@ app.use(session({
 // ensure passport is used
 app.use(passport.session())
 
+<<<<<<< HEAD
 app.use((req, res, next) => {
     console.log(req.user)
     res.locals.user = req.user || null;
     next();
 });
 
+=======
+>>>>>>> 9afd2b85079b581be687d1da3914d6c746d77aed
 
 const assetsPath = path.join(__dirname, "public")
 app.use(express.static(assetsPath))
