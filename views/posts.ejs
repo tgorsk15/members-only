@@ -8,6 +8,14 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs', { user: user }) %>
-    <h2>Here are the messages</h2>
+    <section class="posts-page-container">
+        <a href="/post/newPost/<%= user.id %>" class="add-post-link">Write a Message</a>
+        <h1>What people are saying...</h1>
+        <!-- iterate through entire posts table, display each one,
+        in order of when they were created -->
+
+    </section>
+    
+
 </body>
 </html>

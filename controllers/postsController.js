@@ -8,3 +8,12 @@ exports.postsBoardGet = async (req, res) => {
         user: req.user
     })
 }
+
+exports.newPostGet =async (req, res) => {
+    console.log('add your post')
+    console.log(req.user)
+    res.render("newPost", {
+        title: 'New Message',
+        user: req.user
+    })
+}
