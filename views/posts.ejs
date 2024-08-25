@@ -13,6 +13,19 @@
         <h1>What people are saying...</h1>
         <!-- iterate through entire posts table, display each one,
         in order of when they were created -->
+        <div class="posts-container">
+            <% posts.forEach(post => { %>
+                <div class="post-container">
+                    <div class="post-header-container">
+                        <h3><%= post.title %></h3>
+                        <p><%= post.time %></p> 
+                    </div>
+                    <p><%= post.text %></p>
+                </div>
+                <h4>Posted by <%= user.username %></h4>
+            <% }) %>  
+        </div>
+        
 
     </section>
     

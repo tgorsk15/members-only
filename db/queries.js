@@ -28,6 +28,13 @@ async function getPostByTitle(title) {
     return rows[0]
 }
 
+async function getAllPosts() {
+    const { rows } = await pool.query(`
+        SELECT * FROM posts
+    `)
+    return rows
+}
+
 async function insertNewUser(userInfo, hashedPassword) {
     const insert = await pool.query(`
         INSERT INTO users (first_name, last_name, username, password, ismember, isadmin)
@@ -39,9 +46,9 @@ async function insertNewUser(userInfo, hashedPassword) {
 
 async function insertNewPost(postHeader, postContent) {
     const insert = await pool.query(`
-        INSERT INTO posts (title, text, time)
+        INSERT INTO posts (title, text)
         VALUES
-            ($1, $2, CURRENT_TIMESTAMP)
+            ($1, $2)
     `, [postHeader, postContent])
 }
 
@@ -60,6 +67,7 @@ module.exports = {
     getUserByUsername,
     getUserById,
     getPostByTitle,
+    getAllPosts,
     insertNewUser,
     insertNewPost,
     insertNewReference

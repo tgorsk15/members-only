@@ -2,6 +2,7 @@ const { Client } = require('pg');
 require('dotenv').config();
 
 const resetTables = `
+    DROP TABLE IF EXISTS session;
     DROP TABLE IF EXISTS users_posts;
     DROP TABLE IF EXISTS users;
     DROP TABLE IF EXISTS posts;
@@ -24,7 +25,7 @@ const createPostsTable = `
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         title VARCHAR(100) NOT NULL,
         text VARCHAR (400) NOT NULL,
-        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        time VARCHAR(10) DEFAULT TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YYYY') 
     )
 `
 
