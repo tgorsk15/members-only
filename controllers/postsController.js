@@ -20,9 +20,15 @@ exports.newPostGet = async (req, res) => {
 
 exports.newPostPost = async (req, res) => {
     console.log('this has posted')
-    res.render("posts", {
-        title: 'Posts',
-        user: req.user
-        // pass on messages from posts table here
-    })
+    const content = req.body
+    console.log(content)
+    
+
+    await db.insertNewPost(content.postHeader, content.postContent);
+    // get newly created post from DB:
+    const newPost = await db.getPostByTitle(content.postHeader);
+    console.log(newPost);
+
+    await db.insertNewReference(req.user.id, newPost.id)
+    res.redirect("/post/posts")
 }

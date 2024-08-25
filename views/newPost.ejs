@@ -10,11 +10,12 @@
     <section class="add-post-container">
         <h2 class="add-post-header">Write something</h2>
         <form action="/post/newPost/<%= user.id %>" method="POST">
-            <label for="post-header">Message Header</label>
-            <input type="text" name="post-header" id="post-header" required>
+            <label for="postHeader">Message Header</label>
+            <input type="text" name="postHeader" id="postHeader" required>
 
-            <label for="post-content">Message</label>
-            <input type="text" name="post-content" id="post-content" required>
+            <label for="postContent">Message</label>
+            <textarea type="text" name="postContent" id="postContent" 
+                rows="4" cols="40" required></textarea>
 
             <button>Post</button>
         </form>
