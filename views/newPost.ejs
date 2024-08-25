@@ -8,8 +8,15 @@
 </head>
 <body>
     <section class="add-post-container">
-        <form action="/post/newPost/<%= user.id %>">
-            <!-- 8/25 TMW: Continue filling this out, connect to controller function -->
+        <h2 class="add-post-header">Write something</h2>
+        <form action="/post/newPost/<%= user.id %>" method="POST">
+            <label for="post-header">Message Header</label>
+            <input type="text" name="post-header" id="post-header" required>
+
+            <label for="post-content">Message</label>
+            <input type="text" name="post-content" id="post-content" required>
+
+            <button>Post</button>
         </form>
     </section>
 </body>

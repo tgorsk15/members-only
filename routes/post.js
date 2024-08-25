@@ -6,6 +6,7 @@ const postsController = require('../controllers/postsController')
 postRouter.get("/posts", postsController.postsBoardGet)
 
 // new post
-postRouter.get("/newPost/:userId", postsController.newPostGet)
+postRouter.get("/newPost/:userId", postsController.newPostGet);
+postRouter.post("/newPost/:userId", postsController.newPostPost);
 
 module.exports = postRouter
