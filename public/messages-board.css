@@ -1,0 +1,20 @@
+.post-container {
+    position: relative;
+    background-color: lightgrey;
+    padding: 10px;
+    /* height: 147px; */
+    width: 60vw;
+    min-width: 500px;
+}
+
+.post-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-post-info {
+    position: absolute;
+    bottom: -40px;
+    right: 20px;
+}

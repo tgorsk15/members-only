@@ -12,3 +12,7 @@
 .logout-header-link {
     margin-left: 100px;
 }
+
+.err-container {
+    color: red;
+}
