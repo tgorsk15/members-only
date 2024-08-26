@@ -1,4 +1,16 @@
 const db = require("../db/queries")
+const { body, validationResult } = require("express-validator")
+
+const headerErr = "Message title needs to be anywhere from 2 and 50 characters"
+const contentErr = "Message cannot be greater than 350 characters"
+
+const validatePost = [
+    body("postHeader").trim()
+        .isLength({ min: 2, max: 50 }).withMessage(headerErr),
+    body("postContent").trim()
+        .isLength({ max: 350 }).withMessage(contentErr)
+]
+
 
 exports.postsBoardGet = async (req, res) => {
     let allPosts = await db.getAllPosts()
@@ -10,9 +22,6 @@ exports.postsBoardGet = async (req, res) => {
         console.log('new version', post)
     }))
 
-    // allPosts.forEach(async (post) => {
-        
-    // });
     console.log('all posts', allPosts)
 
     console.log('here are posts')
@@ -31,17 +40,33 @@ exports.newPostGet = async (req, res) => {
     })
 }
 
-exports.newPostPost = async (req, res) => {
-    console.log('this has posted')
-    const content = req.body
-    console.log(content)
-    
+exports.newPostPost = [
+    validatePost,
+    async (req, res) => {
+        try {
+            const errors = validationResult(req);
 
-    await db.insertNewPost(content.postHeader, content.postContent);
-    // get newly created post from DB:
-    const newPost = await db.getPostByTitle(content.postHeader);
-    console.log(newPost);
+            if (!errors.isEmpty()) {
+                return res.status(400).render("newPost", {
+                    title: "New Message",
+                    user: req.user,
+                    errors: errors.array()
+                })
+            };
+            const content = req.body
+            console.log('post content', content)
 
-    await db.insertNewReference(req.user.id, newPost.id)
-    res.redirect("/post/posts")
-}
+            await db.insertNewPost(content.postHeader, content.postContent);
+            // get newly created post from DB:
+            const newPost = await db.getPostByTitle(content.postHeader);
+            console.log(newPost);
+
+            await db.insertNewReference(req.user.id, newPost.id)
+            res.redirect("/post/posts")
+        } catch(err) {
+            console.log(err)
+        }
+        
+    }
+]
+
