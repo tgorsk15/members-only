@@ -19,6 +19,16 @@ async function getUserById(id) {
     return rows[0]
 }
 
+async function getUserByPost(postId) {
+    const { rows } = await pool.query(`
+        SELECT * FROM users
+        JOIN users_posts ON user_id = id
+        WHERE post_id = $1
+    `, [postId])
+
+    return rows[0]
+}
+
 async function getPostByTitle(title) {
     const { rows } = await pool.query(`
         SELECT * FROM posts
@@ -60,12 +70,11 @@ async function insertNewReference(userId, postId) {
     `, [userId, postId])
 }
 
-// possible map: an entry into user_messages table does not
-// have to be inserted until a new message is actually created
 
 module.exports = {
     getUserByUsername,
     getUserById,
+    getUserByPost,
     getPostByTitle,
     getAllPosts,
     insertNewUser,

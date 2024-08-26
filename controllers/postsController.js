@@ -1,8 +1,19 @@
 const db = require("../db/queries")
 
 exports.postsBoardGet = async (req, res) => {
-    const allPosts = await db.getAllPosts()
-    console.log(allPosts)
+    let allPosts = await db.getAllPosts()
+
+    await Promise.all(allPosts.map(async (post) => {
+        const result = await db.getUserByPost(post.id)
+        console.log(result)
+        post.username = result.username
+        console.log('new version', post)
+    }))
+
+    // allPosts.forEach(async (post) => {
+        
+    // });
+    console.log('all posts', allPosts)
 
     console.log('here are posts')
     res.render("posts", {

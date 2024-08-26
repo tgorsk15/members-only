@@ -23,8 +23,6 @@ const validateUser = [
             }
             return true
         })
-
-    
 ]
 
 
