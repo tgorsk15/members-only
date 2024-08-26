@@ -3,10 +3,19 @@
 }
 
 .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     background-color: lightseagreen;
     padding: 20px;
     margin-bottom: 30px;
+}
+
+.user-links-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .logout-header-link {

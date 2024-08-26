@@ -18,4 +18,8 @@ userRouter.post("/login", passport.authenticate(
 // log out
 userRouter.get("/logout", usersController.logoutGet)
 
+// membership
+userRouter.get("/member/:userId", usersController.membershipFormGet)
+userRouter.post("/member/:userId", usersController.membershipFormPost)
+
 module.exports = userRouter

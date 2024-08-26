@@ -3,7 +3,12 @@
         Hi there  
     
     <% if (locals.user) {%>
-        <a href="/user/logout" class="logout-header-link">Log Out</a>
+        <div class="user-links-container">
+            <a href="/user/member/<%= user.id %>">Clubhouse</a>
+            <a href="/user/logout" class="logout-header-link">Log Out</a>
+        </div>
+        
+        
     <% } %>
     </div>
 </header>

@@ -25,6 +25,16 @@ const validateUser = [
         })
 ]
 
+const secretErr = "Wrong Password"
+
+const validateCode = [
+    body("clubhouseCode").trim()
+        .custom((value) => {
+            value === process.env.CLUB_SECRET;
+            return true
+        }).withMessage(secretErr)
+]
+
 
 exports.homePageGet = async (req,res) => {
     console.log(req.body)
@@ -113,6 +123,37 @@ exports.signupPost = [
                 title: 'Sign Up',
                 joined: true
             })
+        } catch(err) {
+            return next(err)
+        }
+    }
+]
+
+// membership status
+exports.membershipFormGet = async (req, res) => {
+    res.render("membership", {
+        title: "Member Status",
+        user: req.user
+    })
+}
+
+exports.membershipFormPost = [
+    validateCode,
+    async (req, res, next) => {
+        try {
+            console.log(req.user)
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                return res.status(400).render("membership", {
+                    title: "Member Status",
+                    user: req.user,
+                    errors: errors.array()
+                })
+            };
+            
+            // if it works, let user know it worked
+            console.log('congrats you\'re in')
         } catch(err) {
             return next(err)
         }

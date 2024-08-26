@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/navbar.ejs', { user: user }) %>
+    <div class="member-form-container">
+        <!-- if user is already a member, display different view
+         and re-affirm their privleages here -->
+        <h1>Join the clubhouse</h1>
+        <p>Members of the clubhouse have the ability to see all posters' 
+            info, and time of messages</p>
+        <form action="/user/member/:userId" method="POST">
+            <label for="clubhouseCode">Club password:</label>
+            <input type="text" name="clubhouseCode" id="clubhouseCode" required>
+
+            <button class="join-club-btn">Join</button>
+        </form>
+        
+    </div>
+    <div class="err-container">
+        <%- include('partials/errors.ejs') %>  
+    </div>
+</body>
+</html>
