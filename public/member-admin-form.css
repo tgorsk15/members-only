@@ -1,0 +1,12 @@
+.member-form-container {
+
+}
+
+.repeat-user-container {
+    display: none;
+    color: green;
+}
+
+.visible {
+    display: block;
+}

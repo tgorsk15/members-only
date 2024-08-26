@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/member-admin-form.css">
     <title><%= title %></title>
 </head>
 <body>
@@ -24,6 +25,10 @@
     </div>
     <div class="err-container">
         <%- include('partials/errors.ejs') %>  
+    </div>
+    <div class="repeat-user-container <%= repeatMember ? 'visible' : '' %> " >
+        <h3>You are already a member of the clubhouse!</h3>
+
     </div>
 </body>
 </html>

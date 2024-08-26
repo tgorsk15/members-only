@@ -133,7 +133,8 @@ exports.signupPost = [
 exports.membershipFormGet = async (req, res) => {
     res.render("membership", {
         title: "Member Status",
-        user: req.user
+        user: req.user,
+        repeatMember: false
     })
 }
 
@@ -148,12 +149,26 @@ exports.membershipFormPost = [
                 return res.status(400).render("membership", {
                     title: "Member Status",
                     user: req.user,
+                    repeatMember: false,
                     errors: errors.array()
                 })
             };
+
+            if (req.user.ismember) {
+                return res.render("membership", {
+                    title: "Member Status",
+                    user: req.user,
+                    repeatMember: true
+                })
+            }
             
-            // if it works, let user know it worked
+            const isMember = true;
+            const makeMember = await db.updateMemberStatus(req.user.id, isMember)
+            // if it works, update user status
             console.log('congrats you\'re in')
+            res.redirect("/")
+
+
         } catch(err) {
             return next(err)
         }

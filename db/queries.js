@@ -70,6 +70,14 @@ async function insertNewReference(userId, postId) {
     `, [userId, postId])
 }
 
+async function updateMemberStatus( userId, isMember) {
+    const updateStatus = await pool.query(`
+            UPDATE users
+            SET ismember = $2
+            WHERE id = $1
+        `, [userId, isMember])
+}
+
 
 module.exports = {
     getUserByUsername,
@@ -79,5 +87,6 @@ module.exports = {
     getAllPosts,
     insertNewUser,
     insertNewPost,
-    insertNewReference
+    insertNewReference,
+    updateMemberStatus
 }
