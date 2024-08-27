@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/navbar.ejs', { user: user }) %>
+    <% if (locals.adminSuccess) {%>
+        <!-- placeholder for success prompt -->
+    <% } else {%>
+        <!-- otherwise display regular form -->
+
+
+        <div class="err-container">
+            <%- include('partials/errors.ejs') %>  
+        </div>
+        <div class="already-admin-container <%= repeatAdmin ? 'visible' : '' %> " >
+            <h3>You already have Admin status</h3>
+        </div>
+    <% } %>
+</body>
+</html>

@@ -181,5 +181,14 @@ exports.membershipFormPost = [
     }
 ]
 
+
+// admin status
+// TMW 8/27: work on putting this together, set up router,
+// controller functions, and special abilities in posts view
+exports.adminFormGet = async (req, res) => {
+    console.log('getting admin form')
+    res.redirect("/")
+}
+
     
 

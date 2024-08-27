@@ -22,4 +22,7 @@ userRouter.get("/logout", usersController.logoutGet)
 userRouter.get("/member/:userId", usersController.membershipFormGet)
 userRouter.post("/member/:userId", usersController.membershipFormPost)
 
+// admin
+userRouter.get("/admin/:userId", usersController.adminFormGet)
+
 module.exports = userRouter
