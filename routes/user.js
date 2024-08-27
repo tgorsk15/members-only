@@ -24,5 +24,6 @@ userRouter.post("/member/:userId", usersController.membershipFormPost)
 
 // admin
 userRouter.get("/admin/:userId", usersController.adminFormGet)
+userRouter.post("/admin/:userId", usersController.adminFormPost)
 
 module.exports = userRouter

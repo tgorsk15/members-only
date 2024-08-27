@@ -2,7 +2,7 @@
 
 }
 
-.repeat-user-container {
+.repeat-user-container, .already-admin-container {
     display: none;
     color: green;
 }

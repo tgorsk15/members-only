@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/member-admin-form.css">
     <title><%= title %></title>
 </head>
 <body>
     <%- include('partials/navbar.ejs', { user: user }) %>
     <% if (locals.adminSuccess) {%>
         <!-- placeholder for success prompt -->
+         <div class="admin-succes-prompt">
+            <h2>Password confirmed. You now have Admin privileges</h2>
+            <a href="/">Back Home</a>
+         </div>
+        
     <% } else {%>
         <!-- otherwise display regular form -->
+        <div class="admin-form-container">
+            <h1>Become an Admin</h1>
+            <p>Admins have all privileges that a club member has, 
+                as well as the ability to comb through the message board and delete messages
+            </p>
+            
+            <form action="/user/admin/<%= user.id %>" method="POST" class="admin-form">
+                <label for="adminCode">Admin Code:</label>
+                <input type="text" name="adminCode" id="adminCode" required>
 
+                <button class="admin-code-btn">Submit</button>
+            </form>
+        </div>
 
         <div class="err-container">
             <%- include('partials/errors.ejs') %>  

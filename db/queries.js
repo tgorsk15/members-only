@@ -70,12 +70,20 @@ async function insertNewReference(userId, postId) {
     `, [userId, postId])
 }
 
-async function updateMemberStatus( userId, isMember) {
+async function updateMemberStatus(userId, isMember) {
     const updateStatus = await pool.query(`
-            UPDATE users
-            SET ismember = $2
-            WHERE id = $1
-        `, [userId, isMember])
+        UPDATE users
+        SET ismember = $2
+        WHERE id = $1
+    `, [userId, isMember])
+}
+
+async function updateAdminStatus(userId, isAdmin) {
+    const updateStatus = await pool.query(`
+        UPDATE users
+        SET isadmin = $2
+        WHERE id = $1
+    `, [userId, isAdmin])
 }
 
 
@@ -88,5 +96,6 @@ module.exports = {
     insertNewUser,
     insertNewPost,
     insertNewReference,
-    updateMemberStatus
+    updateMemberStatus,
+    updateAdminStatus
 }

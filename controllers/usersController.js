@@ -26,13 +26,26 @@ const validateUser = [
 ]
 
 const secretErr = "Wrong Password"
+const adminErr = "Wrong Code"
 
 const validateCode = [
     body("clubhouseCode").trim()
         .custom((value) => {
-            value === process.env.CLUB_SECRET;
+            if (value !== process.env.CLUB_SECRET) {
+                throw new Error(secretErr)
+            }
             return true
-        }).withMessage(secretErr)
+        })
+]
+
+const validateAdmin = [
+    body("adminCode").trim()
+        .custom((value) => {
+            if (value !== process.env.ADMIN_SECRET) {
+                throw new Error(adminErr)
+            }
+            return true
+        })
 ]
 
 
@@ -153,7 +166,7 @@ exports.membershipFormPost = [
                     errors: errors.array()
                 })
             };
-            req.user.ismember = false
+
             if (req.user.ismember) {
                 return res.render("membership", {
                     title: "Member Status",
@@ -183,12 +196,56 @@ exports.membershipFormPost = [
 
 
 // admin status
-// TMW 8/27: work on putting this together, set up router,
-// controller functions, and special abilities in posts view
 exports.adminFormGet = async (req, res) => {
     console.log('getting admin form')
-    res.redirect("/")
+    res.render("admin", {
+        title: 'Admin Status',
+        user: req.user,
+        repeatAdmin: false
+    })
 }
+
+exports.adminFormPost = [
+    validateAdmin,
+    async (req, res, next) => {
+        try {
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                console.log('failing')
+                return res.status(400).render("admin", {
+                    title: "Admin Status",
+                    user: req.user,
+                    repeatAdmin: false,
+                    errors: errors.array()
+                })
+            };
+
+            if (req.user.isadmin) {
+                return res.render("admin", {
+                    title: "Admin Status",
+                    user: req.user,
+                    repeatAdmin: true
+                })
+            }
+
+            // if it works, update user status
+            const isAdmin = true
+            const makeAdmin = await db.updateAdminStatus(req.user.id, isAdmin)
+            console.log('now admin')
+
+            res.render("admin", {
+                title: "Admin Status",
+                user: req.user,
+                repeatAdmin: false,
+                adminSuccess: true
+            })
+
+        } catch(err) {
+            return next(err)
+        }
+    }
+]
 
     
 
