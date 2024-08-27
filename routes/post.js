@@ -9,4 +9,7 @@ postRouter.get("/posts", postsController.postsBoardGet)
 postRouter.get("/newPost/:userId", postsController.newPostGet);
 postRouter.post("/newPost/:userId", postsController.newPostPost);
 
+// remove post
+postRouter.get("/remove/postId", postsController.removePostGet)
+
 module.exports = postRouter

@@ -65,3 +65,7 @@ exports.newPostPost = [
     }
 ]
 
+exports.removePostGet = async (res, req) => {
+    
+}
+

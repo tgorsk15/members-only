@@ -27,6 +27,11 @@
                     <h4 class="user-post-info">
                         Posted by <%= user.ismember ? post.username : 'Anonymous' %>
                     </h4>
+                    <% if (user.isadmin) {%>
+                        <a href="/post/remove/<%= post.id %>" class="remove-post-link">
+                            Remove
+                        </a>
+                    <% } %>
                 </div>
                 
             <% }) %>  
