@@ -19,10 +19,14 @@
                 <div class="post-container">
                     <div class="post-header-container">
                         <h3><%= post.title %></h3>
+                        <% if (user.ismember === true) {%>
                         <p><%= post.time %></p> 
+                        <% } %>
                     </div>
                     <p><%= post.text %></p>
-                    <h4 class="user-post-info">Posted by <%= post.username %></h4>
+                    <h4 class="user-post-info">
+                        Posted by <%= user.ismember ? post.username : 'Anonymous' %>
+                    </h4>
                 </div>
                 
             <% }) %>  
