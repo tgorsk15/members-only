@@ -153,7 +153,7 @@ exports.membershipFormPost = [
                     errors: errors.array()
                 })
             };
-
+            req.user.ismember = false
             if (req.user.ismember) {
                 return res.render("membership", {
                     title: "Member Status",
@@ -161,12 +161,18 @@ exports.membershipFormPost = [
                     repeatMember: true
                 })
             }
-            
-            const isMember = true;
-            const makeMember = await db.updateMemberStatus(req.user.id, isMember)
+
             // if it works, update user status
+            const isMember = true
+            const makeMember = await db.updateMemberStatus(req.user.id, isMember)
             console.log('congrats you\'re in')
-            res.redirect("/")
+
+            res.render("membership", {
+                title: "Member Status",
+                user: req.user,
+                repeatMember: false,
+                memberSuccess: true
+            })
 
 
         } catch(err) {
