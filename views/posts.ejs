@@ -9,11 +9,15 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs', { user: user }) %>
+    <section class="posts-header-section">
+        <div class="posts-header-container">
+            <a href="/post/newPost/<%= user.id %>" class="add-post-link">Write a Message</a>
+            <h1>What people are saying...</h1>
+        </div>
+        
+    </section>
     <section class="posts-page-container">
-        <a href="/post/newPost/<%= user.id %>" class="add-post-link">Write a Message</a>
-        <h1>What people are saying...</h1>
-        <!-- iterate through entire posts table, display each one,
-        in order of when they were created -->
+        
         <div class="posts-container">
             <% posts.forEach(post => { %>
                 <div class="post-container">
@@ -36,7 +40,7 @@
                 
             <% }) %>  
         </div>
-
+        
     </section>
     
 </body>

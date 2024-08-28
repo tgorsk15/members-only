@@ -86,6 +86,19 @@ async function updateAdminStatus(userId, isAdmin) {
     `, [userId, isAdmin])
 }
 
+async function deletePostById(postId) {
+    const deletePost = await pool.query(`
+        DELETE FROM posts
+        WHERE id = $1
+    `, [postId]) 
+}
+
+async function deleteReferenceByPost(postId) {
+    const deleteReference = await pool.query(`
+        DELETE FROM users_posts
+        WHERE post_id = $1
+    `, [postId]) 
+}
 
 module.exports = {
     getUserByUsername,
@@ -97,5 +110,7 @@ module.exports = {
     insertNewPost,
     insertNewReference,
     updateMemberStatus,
-    updateAdminStatus
+    updateAdminStatus,
+    deletePostById,
+    deleteReferenceByPost
 }

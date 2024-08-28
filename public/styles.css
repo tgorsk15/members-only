@@ -2,14 +2,22 @@
     margin: 0px;
 }
 
+body {
+    position: relative;
+}
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 40px);
     background-color: lightseagreen;
     padding: 20px;
     margin-bottom: 30px;
+}
+
+.navbar-container > h2 {
+    margin: 8px;
 }
 
 .user-links-container {

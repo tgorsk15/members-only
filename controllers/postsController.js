@@ -65,7 +65,13 @@ exports.newPostPost = [
     }
 ]
 
-exports.removePostGet = async (res, req) => {
-    
+
+exports.removePostGet = async (req, res) => {
+    const postId = req.params.postId
+
+    await db.deletePostById(postId);
+    await db.deleteReferenceByPost(postId);
+    console.log('this post is deleted')
+    res.redirect("/post/posts")
 }
 

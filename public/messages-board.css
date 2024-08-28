@@ -1,3 +1,25 @@
+.posts-header-section {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.posts-header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+}
+
+/* TMW 8/28: work on fixing this so that it displays properly */
+
+
+.posts-page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .post-container {
     position: relative;
     background-color: lightgrey;
@@ -24,4 +46,11 @@
     position: absolute;
     bottom: -20px;
     left: 20px;
+}
+
+/* remove post menu */
+.remove-post-prompt {
+    background-color: silver;
+    border: 2px solid rgb(222, 102, 102);
+    border-radius: 25px;
 }
