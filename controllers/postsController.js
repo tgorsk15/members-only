@@ -11,8 +11,23 @@ const validatePost = [
         .isLength({ max: 350 }).withMessage(contentErr)
 ]
 
+function gettimeMessage() {
+    let timeString = ''
+    const d = new Date()
+    const curHour = d.getHours()
+
+    if (0 <= curHour && 12 > curHour) {
+        timeString = 'Good Morning'
+    } else if (12 <= curHour && curHour < 17) {
+        timeString = 'Good Afternoon'
+    } else if (curHour >= 17) {
+        timeString = 'Good Evening'
+    }
+    return timeString
+}
 
 exports.postsBoardGet = async (req, res) => {
+    const timeMessage = gettimeMessage()
     let allPosts = await db.getAllPosts()
 
     await Promise.all(allPosts.map(async (post) => {
@@ -24,7 +39,8 @@ exports.postsBoardGet = async (req, res) => {
     res.render("posts", {
         title: 'Posts',
         user: req.user,
-        posts: allPosts
+        posts: allPosts,
+        timeMessage: timeMessage
     })
 }
 
@@ -32,7 +48,7 @@ exports.newPostGet = async (req, res) => {
     console.log('add your post')
     res.render("newPost", {
         title: 'New Message',
-        user: req.user
+        user: req.user,
     })
 }
 

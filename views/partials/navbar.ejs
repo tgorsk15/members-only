@@ -4,11 +4,16 @@
     
     <% if (locals.user) {%>
         <div class="user-links-container">
-            <a href="/user/member/<%= user.id %>">Clubhouse</a>
+            
+            <% if (locals.time) {%>
+                <h3><%= time %>, <%= user.first_name %>...</h3>      
+            <% } %>
+            
+            <a href="/post/posts">Message Board</a>
+            <a href="/user/member/<%= user.id %>">Join Clubhouse</a>
             <a href="/user/admin/<%= user.id %>">Become an Admin</a>
             <a href="/user/logout" class="logout-header-link">Log Out</a>
         </div>
-        
         
     <% } %>
     </div>

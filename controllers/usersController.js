@@ -48,6 +48,11 @@ const validateAdmin = [
         })
 ]
 
+function getCurrentTime() {
+    const d = new Date()
+    console.log(d)
+}
+
 
 exports.homePageGet = async (req,res) => {
     console.log(req.body)
