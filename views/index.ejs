@@ -9,18 +9,23 @@
 <body>
     <!-- include header -->
     <%- include('partials/navbar.ejs', { user: user }) %>
-    <section class="home-menu"></section>
-    <% if (locals.user) {%>
-        <h1 class="user-greet">Welcome back <%= user.first_name %>!</h1>
-        <div class="home-prompt-container">
-            <a href="/post/posts">View your messages -></a>
+    <section class="home-section">
+        <div class="home-container">
+           <% if (locals.user) {%>
+                <h1 class="user-greet">Welcome back <%= user.first_name %>!</h1>
+                <div class="home-prompt-container">
+                    <a href="/post/posts" class="view-posts-link">
+                        View your messages ->
+                    </a>
+                </div>
+                <img src="/logo.png" alt="chat board" class="logo-img">
+            <% } else {%>
+                <h1 class="welcome-header">Welcome to Members Only</h1>
+                <a href="/user/login">Sign In</a>
+                <a href="/user/new">Sign Up</a>
+            <% } %> 
         </div>
-    <% } else {%>
-       
-            <h2 class="welcome-header">Welcome to my site</h2>
-            <a href="/user/login">Sign In</a>
-            <a href="/user/new">Sign Up</a>
-    <% } %>
+    
     </section> 
     
 </body>
