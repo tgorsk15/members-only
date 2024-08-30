@@ -30,9 +30,27 @@ body {
 }
 
 .user-links-container > a {
+    position: relative;
+    display: inline-block;
+    
+    font-weight: bold;
+    overflow: hidden;
+    background: 
+        linear-gradient(to right, rgb(255, 111, 60), rgb(255, 111, 60) 50%, whitesmoke 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+
+    transition: background-position 180ms ease-in;
+
+}
+
+.user-links-container > a:hover {
+    background-position: 0 100%;
 }
 
 .logout-header-link {
