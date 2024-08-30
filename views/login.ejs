@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/login-signup-form.css">
+    <link rel="stylesheet" href="/login-signup-forms.css">
     <title><% title %></title>
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
-    <% if (message.length > 0) { %>
-        <h3 class="login-fail-message"><%= message %>: Please try again</h3>
-    <% } %>
-    <form action="/user/login" method="POST" class="login-form">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
+    <section class="login-section">
+        <div class="err-container">
+            <% if (message.length > 0) { %>
+                <h3 class="login-fail-message"><%= message %>: Please try again</h3>
+            <% } %> 
+        </div>
+        
+        <div class="login-container">
+            <h1>Log In</h1>
+            <form action="/user/login" method="POST" class="login-form">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
 
-        <label for="password">Password:</label>
-        <input type="text" name="password" id="password" required>
+                <label for="password">Password:</label>
+                <input type="text" name="password" id="password" required>
 
-        <button class="login-button">Log In</button>
-    </form>
-    <div class="signup-prompt-container">
-        <h3 class="signup-prompt">
-            Don't have an account? Sign up
-            <span><a href="/user/new" class="signup-link">Here</a></span>
-        </h3>
-    </div>
+                <button class="login-button">Log In</button>
+            </form>
+            <div class="signup-prompt-container">
+                <h3 class="signup-prompt">
+                    Don't have an account? Sign up
+                    <span><a href="/user/new" class="signup-link">Here</a></span>
+                </h3>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
