@@ -1,10 +1,11 @@
-.login-section {
+.login-section, .signup-section {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
-.login-container {
+/* 8/31: Just added signup container here */
+.login-container, .signup-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -15,7 +16,97 @@
     box-sizing: border-box;
     border-radius: 20px;
     box-shadow: 0px 0px 20px 0px silver;
+    position: relative;
 }
+
+/* 8/31: Need to style signup-success */
+/* signup-section */
+.signup-success-container {
+
+}
+
+.back-home-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: -65px;
+    left: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    transition: color 200ms ease-out;
+}
+
+.back-home-link:hover {
+    color: #ff6f3c;
+}
+
+.back-home-link > h2 {
+    text-decoration: none;
+    /* color: black; */
+    font-size: 22px;
+    width: 150px;
+}
+
+.back-home-link > i {
+    margin-right: 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.full-name-section, .user-info-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .full-name-section > label, .user-info-section > label {
+    margin-right: 10px;
+}
+
+.full-name-section > input, .user-info-section > input {
+    margin-right: 20px;
+} */
+
+.sign-up-button {
+    position: relative;
+    width: 138px;
+    align-self: center;
+    font-size: 18px;
+    background-color: white;
+    border: none;
+}
+
+.sign-up-button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #ff6f3c;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.sign-up-button:hover::before {
+    transform: scaleX(1);
+}
+
+.signup-err-container {
+    position: absolute;
+    top: -15px;
+    left: 45%;
+    color: #ff6f3c;
+}
+/* end of sign up section */
+
 
 .login-container > h1 {
     font-size: 28px;

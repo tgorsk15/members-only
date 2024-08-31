@@ -4,42 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/login-signup-form.css">
+    <link rel="stylesheet" href="/login-signup-forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title><%= title %></title>
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
-    <% if (locals.joined) {%>
-    <div class="signup-success-container">
-        <h2 class="signup-success-message">Perfect, your account is set up!</h2>
-        <a href="/user/login">Back to Login</a>
-    </div>
-    <% } else { %>
-       <form action="/user/new" method="POST" class="signup-form">
-            <div class="full-name-section">
-                <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" id="firstName" required>
+    <section class="signup-section">
+        <% if (locals.joined) {%>
+        <div class="signup-success-container">
+            <h2 class="signup-success-message">Perfect, your account is set up!</h2>
+            <a href="/user/login">Back to Login</a>
+        </div>
+        <% } else { %>
+            <div class="signup-container">
 
-                <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastName" required>
+                <a href="/" class="back-home-link">
+                    <i class="fa-solid fa-left-long"></i>
+                    <h2>Back to Home</h2>
+                </a>
+               <h1>Sign Up</h1>
+                <form action="/user/new" method="POST" class="signup-form">
+                    <div class="full-name-section">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName" id="firstName" required>
+
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName" id="lastName" required>
+                    </div>
+
+                    <div class="user-info-section">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" required>
+
+                        <label for="password">Password:</label>
+                        <input type="text" name="password" id="password" required> 
+                    </div>
+                    
+
+                    <h3 class="member-status-info">
+                        Once you've created an account, join the clubhouse for exclusive features!
+                    </h3>
+
+                    <button class="sign-up-button">Create Account</button>
+                </form> 
             </div>
-
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required>
-
-            <label for="password">Password:</label>
-            <input type="text" name="password" id="password" required>
-
-            <h3 class="member-status-info">
-                Once you've created an account, join the clubhouse for exclusive features!
-            </h3>
-
-            <button class="sign-up-button">Create Account</button>
-        </form> 
-    <% } %>
-    <div class="err-container">
-      <%- include('partials/errors.ejs') %>  
-    </div>
+             
+        <% } %>
+        <div class="signup-err-container">
+            <%- include('partials/errors.ejs') %>  
+        </div>
+    </section>
+    
     
 
     
