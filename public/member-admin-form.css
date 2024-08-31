@@ -1,12 +1,54 @@
-.member-form-container {
+body {
+    /* display: flex;
+    justify-content: center; */
+}
+
+.membership-section {
+    display: flex;
+    justify-content: center;
+}
+
+.member-form-container, .member-success-prompt {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+    height: fit-content; 
+    margin-top: 130px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px silver;
+    position: relative;
+}
+
+.clubhouse-header {
+    font-size: 29px;
+    font-weight: bold;
+    color: #155263;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.note-span {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/* style this */
+.join-club-btn {
 
 }
 
 .repeat-user-container, .already-admin-container {
     display: none;
-    color: green;
+    color: #ff6f3c;
 }
 
 .visible {
     display: block;
+}
+
+.err-container {
+    color: #ff6f3c;
 }

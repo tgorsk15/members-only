@@ -9,34 +9,36 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs', { user: user }) %>
-    <% if (locals.memberSuccess) {%>
-        <div class="member-success-prompt">
-            <h2>Congrats!  You're part of the club</h2>
-            <a href="/">Go Back Home</a>
-        </div>
-    <% } else {%>
-        <div class="member-form-container">
-            <!-- if user is already a member, display different view
-            and re-affirm their privleages here -->
-            <h1>Join the clubhouse</h1>
-            <p>Members of the clubhouse have the ability to see all posters' 
-                info, and time of messages</p>
-            <form action="/user/member/:userId" method="POST">
-                <label for="clubhouseCode">Club password:</label>
-                <input type="text" name="clubhouseCode" id="clubhouseCode" required>
 
-                <button class="join-club-btn">Join</button>
-            </form>
-            
-        </div>
-        <div class="err-container">
-            <%- include('partials/errors.ejs') %>  
-        </div>
-        <div class="repeat-user-container <%= repeatMember ? 'visible' : '' %> " >
-            <h3>You are already a member of the clubhouse!</h3>
+    <section class="membership-section">
+        <% if (locals.memberSuccess) {%>
+            <div class="member-success-prompt">
+                <h2>Congrats!  You're part of the club</h2>
+                <a href="/">Go Back Home</a>
+            </div>
+        <% } else {%>
+            <div class="member-form-container">
+                <h1 class="clubhouse-header">Join the clubhouse</h1>
+                <p>
+                    <span class="note-span">Note: </span>
+                    Members of the clubhouse have the ability to see all posters' 
+                    info, and time of messages
+                </p>
+                <form action="/user/member/:userId" method="POST">
+                    <label for="clubhouseCode">Club password:</label>
+                    <input type="text" name="clubhouseCode" id="clubhouseCode" required>
 
-        </div>
-    <% } %>
+                    <button class="join-club-btn">Join</button>
+                </form>
+                <div class="repeat-user-container <%= repeatMember ? 'visible' : '' %> " >
+                    <h3>You are already a member of the clubhouse!</h3>
+                </div>
+            </div>
+            <div class="err-container">
+                <%- include('partials/errors.ejs') %>  
+            </div>
+        <% } %>
+    </section>
     
 </body>
 </html>
