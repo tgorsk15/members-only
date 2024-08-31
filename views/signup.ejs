@@ -14,7 +14,7 @@
         <% if (locals.joined) {%>
         <div class="signup-success-container">
             <h2 class="signup-success-message">Perfect, your account is set up!</h2>
-            <a href="/user/login">Back to Login</a>
+            <a href="/user/login" class="signup-success-back">Back to Login</a>
         </div>
         <% } else { %>
             <div class="signup-container">
@@ -40,7 +40,6 @@
                         <label for="password">Password:</label>
                         <input type="text" name="password" id="password" required> 
                     </div>
-                    
 
                     <h3 class="member-status-info">
                         Once you've created an account, join the clubhouse for exclusive features!

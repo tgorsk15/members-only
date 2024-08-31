@@ -5,7 +5,7 @@
 }
 
 /* 8/31: Just added signup container here */
-.login-container, .signup-container {
+.login-container, .signup-container, .signup-success-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -19,10 +19,28 @@
     position: relative;
 }
 
+.signup-success-container {
+    height: 30vh;
+}
+
 /* 8/31: Need to style signup-success */
 /* signup-section */
-.signup-success-container {
+.signup-success-back {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px 0px silver;
+    width: 130px;
+    font-size: 20px;
+    padding: 7px 9px;
+    font-weight: bold;
+    transition: color 200ms ease-out;
+}
 
+.signup-success-back:hover {
+    color: #ff6f3c;
 }
 
 .back-home-link {
@@ -63,14 +81,6 @@
     display: flex;
     justify-content: space-between;
 }
-
-/* .full-name-section > label, .user-info-section > label {
-    margin-right: 10px;
-}
-
-.full-name-section > input, .user-info-section > input {
-    margin-right: 20px;
-} */
 
 .sign-up-button {
     position: relative;
