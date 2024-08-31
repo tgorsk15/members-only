@@ -92,8 +92,18 @@
 
 .remove-post-link {
     position: absolute;
-    bottom: -25px;
+    bottom: -30px;
     left: 20px;
+    padding: 5px 6px;
+    background-color: #155263;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    transition: all 200ms ease-out;
+}
+
+.remove-post-link:hover {
+    background-color: #3b7586;
 }
 
 /* remove post menu */
