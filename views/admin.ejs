@@ -9,35 +9,39 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs', { user: user }) %>
-    <% if (locals.adminSuccess) {%>
-        <!-- placeholder for success prompt -->
-         <div class="admin-succes-prompt">
-            <h2>Password confirmed. You now have Admin privileges</h2>
-            <a href="/">Back Home</a>
-         </div>
-        
-    <% } else {%>
-        <!-- otherwise display regular form -->
-        <div class="admin-form-container">
-            <h1>Become an Admin</h1>
-            <p>Admins have all privileges that a club member has, 
-                as well as the ability to comb through the message board and delete messages
-            </p>
+    <section class="admin-section">
+        <% if (locals.adminSuccess) {%>
+            <div class="admin-success-prompt">
+                <h2>Password confirmed. You now have Admin privileges</h2>
+                <a href="/" class="admin-success-back">Back Home</a>
+            </div>
             
-            <form action="/user/admin/<%= user.id %>" method="POST" class="admin-form">
-                <label for="adminCode">Admin Code:</label>
-                <input type="text" name="adminCode" id="adminCode" required>
+        <% } else {%>
+            <div class="admin-form-container">
+                <h1>Become an Admin</h1>
+                <p>
+                    <span class="note-span">Note:</span>
+                    <br>
+                    Admins have all privileges that a club member has, 
+                    as well as the ability to comb through the message board and delete messages
+                </p>
+                
+                <form action="/user/admin/<%= user.id %>" method="POST" class="admin-form">
+                    <label for="adminCode">Admin Code:</label>
+                    <input type="text" name="adminCode" id="adminCode" required>
 
-                <button class="admin-code-btn">Submit</button>
-            </form>
-        </div>
+                    <button class="admin-code-btn">Submit</button>
+                </form>
 
-        <div class="err-container">
-            <%- include('partials/errors.ejs') %>  
-        </div>
-        <div class="already-admin-container <%= repeatAdmin ? 'visible' : '' %> " >
-            <h3>You already have Admin status</h3>
-        </div>
-    <% } %>
+                <div class="already-admin-container <%= repeatAdmin ? 'visible' : '' %> " >
+                    <h3>You already have Admin status</h3>
+                </div>
+
+                <div class="err-container">
+                    <%- include('partials/errors.ejs') %>  
+                </div>
+            </div>
+        <% } %>
+    </section>
 </body>
 </html>
