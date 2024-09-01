@@ -8,22 +8,25 @@
     <title><%= title %></title>
 </head>
 <body>
-    <section class="add-post-container">
-        <h2 class="add-post-header">Write something</h2>
-        <form action="/post/newPost/<%= user.id %>" method="POST">
-            <label for="postHeader">Message Header</label>
-            <input type="text" name="postHeader" id="postHeader" required>
+    <%- include('partials/navbar.ejs', { user: user }) %>
+    <section class="add-post-section">
+        <div class="add-post-container">
+            <h2 class="add-post-header">Write Something</h2>
+            <form action="/post/newPost/<%= user.id %>" method="POST" class="new-post-form">
+                <label for="postHeader">Message Header</label>
+                <input type="text" name="postHeader" id="postHeader" required>
 
-            <label for="postContent">Message</label>
-            <textarea type="text" name="postContent" id="postContent" 
-                rows="5" cols="80" required></textarea>
+                <label for="postContent" class="message-label">Message</label>
+                <textarea type="text" name="postContent" id="postContent" 
+                    rows="5" cols="80" required></textarea>
 
-            <button>Post</button>
-        </form>
-
-        <div class="err-container">
-            <%- include('partials/errors.ejs') %>  
+                <button class="post-message-btn">Post</button>
+            </form>
+            <div class="err-container">
+                <%- include('partials/errors.ejs') %>  
+            </div>
         </div>
+        
     </section>
 </body>
 </html>

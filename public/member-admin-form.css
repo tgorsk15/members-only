@@ -54,6 +54,10 @@ body {
     font-size: 19px;
 }
 
+form > label {
+    font-weight: bold;
+}
+
 .join-club-btn {
     position: relative;
     margin-left: 10px;
@@ -83,7 +87,7 @@ body {
     transform-origin: left;
     border-radius: 2px;
     z-index: -1;
-    padding-right: 3px;
+    padding-right: 2px;
     will-change: transform;
 }
 
@@ -141,6 +145,11 @@ body {
 
 .admin-form-container > h1 {
     margin-bottom: 0px;
+    color: #155263;
+}
+
+.admin-form > label {
+    font-weight: bold;
 }
 
 .admin-code-btn {
@@ -154,9 +163,9 @@ body {
     transition: color 200ms ease-in-out;
 }
 
-/* .join-club-btn:hover {
+.admin-code-btn:hover {
     color: white
-} */
+}
 
 .admin-code-btn::before {
     content: '';

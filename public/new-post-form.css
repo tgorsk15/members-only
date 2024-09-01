@@ -1,0 +1,86 @@
+.add-post-section {
+    display: flex;
+    justify-content: center;
+}
+
+.add-post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content; 
+    margin-top: 130px;
+    padding: 30px;
+    height: fit-content;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px silver;
+    position: relative;
+}
+
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#postHeader {
+    width: 350px;
+}
+
+.message-label {
+    margin-top: 20px;
+}
+
+input, textarea {
+    padding: 4px;
+    border-radius: 5px;
+    border: 2px solid #155263;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+.post-message-btn {
+    position: relative;
+    width: 55px;
+    padding: 3px 0px;
+    margin-top: 15px;
+    border: solid 2px #ff6f3c;
+    border-radius: 5px;
+    color: #ff6f3c;
+    transition: all 200ms ease-in-out;
+    background-color: transparent;
+}
+
+.post-message-btn:hover {
+    color: white;
+}
+
+.post-message-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #9fc5d0;
+    transform: scaleX(0);
+    transition: all 0.2s ease-in-out;
+    transform-origin: bottom;
+    border-radius: 2px;
+    z-index: -1;
+    /* padding-right: 2px; */
+    will-change: transform;
+    overflow: hidden;
+}
+
+.post-message-btn:hover::before {
+    transform: scaleX(1);
+}
+
+
+
