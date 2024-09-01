@@ -34,8 +34,6 @@ exports.postsBoardGet = async (req, res) => {
         const result = await db.getUserByPost(post.id)
         post.username = result.username
     }))
-
-    console.log('here are posts')
     res.render("posts", {
         title: 'Posts',
         user: req.user,
@@ -66,10 +64,8 @@ exports.newPostPost = [
                 })
             };
             const content = req.body
-            console.log('post content', content)
 
             await db.insertNewPost(content.postHeader, content.postContent);
-            // get newly created post from DB:
             const newPost = await db.getPostByTitle(content.postHeader);
 
             await db.insertNewReference(req.user.id, newPost.id)
@@ -87,7 +83,6 @@ exports.removePostGet = async (req, res) => {
 
     await db.deletePostById(postId);
     await db.deleteReferenceByPost(postId);
-    console.log('this post is deleted')
     res.redirect("/post/posts")
 }
 

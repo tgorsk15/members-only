@@ -57,9 +57,7 @@ body {
     background-position: 100%;
     text-decoration: none;
     color: white;
-
     transition: background-position 180ms ease-in;
-
 }
 
 .user-links-container > a:hover {

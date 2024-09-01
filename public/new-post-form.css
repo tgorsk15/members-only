@@ -20,7 +20,6 @@
 .new-post-form {
     display: flex;
     flex-direction: column;
-
 }
 
 #postHeader {
@@ -73,7 +72,6 @@ label {
     transform-origin: bottom;
     border-radius: 2px;
     z-index: -1;
-    /* padding-right: 2px; */
     will-change: transform;
     overflow: hidden;
 }

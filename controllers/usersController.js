@@ -1,5 +1,4 @@
 const db = require("../db/queries")
-const passport = require("passport")
 const bcrypt = require('bcryptjs')
 const { body, validationResult } = require("express-validator")
 
@@ -48,14 +47,9 @@ const validateAdmin = [
         })
 ]
 
-function getCurrentTime() {
-    const d = new Date()
-    console.log(d)
-}
 
 
 exports.homePageGet = async (req,res) => {
-    console.log(req.body)
     console.log('here is user', req.user)
     res.render('index', {
         title: 'Home',
@@ -65,7 +59,6 @@ exports.homePageGet = async (req,res) => {
 
 // logging in
 exports.loginFormGet = async (req, res) => {
-    console.log(req.session)
     let message = ''
     if (req.session.messages && req.session.messages.length > 0) {
         message = req.session.messages[0]
@@ -73,7 +66,6 @@ exports.loginFormGet = async (req, res) => {
     if (message.length > 1 && message) {
         message = message.charAt(0).toUpperCase() + message.slice(1)   
     }
-    console.log(message)
     req.session.messages = []
 
     res.render('login', {
@@ -84,9 +76,7 @@ exports.loginFormGet = async (req, res) => {
 
 exports.loginFormPost = async (req, res) => {
     console.log('logging in')
-    console.log(req.session)
     try {
-        console.log('authenticated?')
 
     } catch(err) {
         console.log(err)
@@ -95,7 +85,6 @@ exports.loginFormPost = async (req, res) => {
 
 //logout
 exports.logoutGet = async (req, res, next) => {
-    console.log('logging out')
     req.logout((err) => {
         if (err) {
             return next(err)
@@ -107,7 +96,6 @@ exports.logoutGet = async (req, res, next) => {
 
 // signing up
 exports.signupFormGet = async (req, res) => {
-    console.log('this is sign up function')
     res.render('signup', {
         title: 'Sign Up'
     })
@@ -129,14 +117,12 @@ exports.signupPost = [
             const userInfo = req.body
             userInfo.isMember = false
             userInfo.isAdmin = false
-            console.log(userInfo)
             
             bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
                 console.log(hashedPassword)
                 await db.insertNewUser(userInfo, hashedPassword)
             })
 
-            // if it works, let user know it worked
             res.render("signup", {
                 title: 'Sign Up',
                 joined: true
@@ -160,7 +146,6 @@ exports.membershipFormPost = [
     validateCode,
     async (req, res, next) => {
         try {
-            console.log(req.user)
             const errors = validationResult(req);
 
             if (!errors.isEmpty()) {
@@ -179,11 +164,8 @@ exports.membershipFormPost = [
                     repeatMember: true
                 })
             }
-
-            // if it works, update user status
             const isMember = true
             const makeMember = await db.updateMemberStatus(req.user.id, isMember)
-            console.log('congrats you\'re in')
 
             res.render("membership", {
                 title: "Member Status",
@@ -202,7 +184,6 @@ exports.membershipFormPost = [
 
 // admin status
 exports.adminFormGet = async (req, res) => {
-    console.log('getting admin form')
     res.render("admin", {
         title: 'Admin Status',
         user: req.user,
@@ -234,7 +215,6 @@ exports.adminFormPost = [
                 })
             }
 
-            // if it works, update user status
             const isAdmin = true
             const makeAdmin = await db.updateAdminStatus(req.user.id, isAdmin)
             console.log('now admin')
