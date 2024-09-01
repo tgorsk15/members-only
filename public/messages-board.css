@@ -76,6 +76,7 @@
     border: 2px solid #ff9a3c;
     border-radius: 20px;
     box-shadow: 2px 2px 4px 0px rgb(110, 110, 110);
+    font-family: "Prompt", sans-serif;
 }
 
 .post-header-container {
@@ -92,7 +93,7 @@
 
 .remove-post-link {
     position: absolute;
-    bottom: -32px;
+    bottom: -34px;
     left: 20px;
     padding: 5px 6px;
     background-color: #155263;
